@@ -1,5 +1,5 @@
 /* Service worker — offline cache for Fiszki OBRONA */
-const VERSION = 'fiszki-v1';
+const VERSION = 'fiszki-v2';
 const ASSETS = [
   './',
   './index.html',

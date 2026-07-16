@@ -38,7 +38,6 @@ async function boot(){
   renderChips();
   updateHome();
   wire();
-  registerSW();
 }
 
 function sectionById(id){ return DATA.sections.find(s => s.id === id); }
@@ -180,9 +179,11 @@ function wire(){
 }
 
 function registerSW(){
-  if ('serviceWorker' in navigator){
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
-  }
+  if (!('serviceWorker' in navigator)) return;
+  // Register immediately (do NOT wait for the load event — it may already have
+  // fired by the time async boot() runs, which would skip registration entirely).
+  navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 
+registerSW();
 boot();
