@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1220">
+<title>Fiszki OBRONA</title>
+<link rel="manifest" href="app.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fiszki">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- HOME -->
+<section id="home" class="screen">
+  <div class="home-inner">
+    <div class="logo">🧠</div>
+    <h1>Fiszki <span>OBRONA</span></h1>
+    <p class="tagline">Powtórka do obrony — pytanie, dotknij, odpowiedź.</p>
+
+    <div class="stat"><b id="activeCount">—</b> aktywnych fiszek</div>
+
+    <div class="filters">
+      <div class="filters-head">
+        <span>Działy</span>
+        <button id="toggleAll" class="link">Zaznacz / odznacz wszystkie</button>
+      </div>
+      <div id="chips" class="chips"></div>
+    </div>
+
+    <button id="startBtn" class="primary big">Zaczynamy →</button>
+
+    <div class="home-actions">
+      <button id="restoreBtn" class="link hidden">↺ Przywróć usunięte (<span id="removedCount">0</span>)</button>
+    </div>
+    <p class="offline-note">✈️ Działa offline. Dodaj do ekranu głównego, by mieć jak apkę.</p>
+  </div>
+</section>
+
+<!-- STUDY -->
+<section id="study" class="screen hidden">
+  <header class="topbar">
+    <button id="homeBtn" class="icon-btn" aria-label="Menu">☰</button>
+    <div class="progress-wrap"><div id="progressBar" class="progress"></div></div>
+    <div id="counter" class="counter">0 / 0</div>
+  </header>
+
+  <main id="cardArea" class="card-area">
+    <article id="card" class="flashcard" tabindex="0">
+      <div class="chip-sec" id="cardSec">DZIAŁ</div>
+
+      <!-- QUESTION side -->
+      <div id="qSide" class="side q-side">
+        <div class="emoji" id="cardEmoji">🧠</div>
+        <div class="q-text" id="qText"></div>
+        <div class="hint">dotknij, aby zobaczyć odpowiedź</div>
+      </div>
+
+      <!-- ANSWER side -->
+      <div id="aSide" class="side a-side hidden">
+        <div class="a-head"><span class="a-emoji" id="aEmoji">🧠</span><h2 id="aTitle"></h2></div>
+        <ul id="aPoints"></ul>
+        <p id="aNote" class="note"></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="actionbar">
+    <button id="removeBtn" class="ghost">💤 Umiem — nie pokazuj</button>
+    <button id="mainBtn" class="primary">Pokaż odpowiedź</button>
+  </footer>
+</section>
+
+<!-- DONE -->
+<section id="done" class="screen hidden">
+  <div class="home-inner">
+    <div class="logo">🎉</div>
+    <h1>Koniec rundy!</h1>
+    <p class="tagline" id="doneMsg"></p>
+    <button id="againBtn" class="primary big">Jeszcze raz (przetasuj)</button>
+    <button id="doneHomeBtn" class="link">← Menu</button>
+  </div>
+</section>
+
+<!-- MENU sheet -->
+<div id="sheet" class="sheet hidden">
+  <div class="sheet-card">
+    <h3>Menu</h3>
+    <button id="mContinue" class="row-btn">↩︎ Wróć do nauki</button>
+    <button id="mHome" class="row-btn">🏠 Menu główne (zmień działy)</button>
+    <button id="mReshuffle" class="row-btn">🔀 Przetasuj od nowa</button>
+    <button id="mRestore" class="row-btn">↺ Przywróć usunięte fiszki</button>
+    <div class="sheet-info" id="sheetInfo"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
